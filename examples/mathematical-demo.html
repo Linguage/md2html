@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Markdown with Effect</title>
+  <style>
+/* 数学之美 主题特效 */
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+
+      @keyframes slideInLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    
+
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        70% {
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    
+
+      @keyframes typeWriter {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+      @keyframes blinkCursor {
+        0%, 50% {
+          border-right-color: transparent;
+        }
+        51%, 100% {
+          border-right-color: var(--md-primary-color);
+        }
+      }
+    
+
+      @keyframes codeGlow {
+        0%, 100% {
+          box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(0, 123, 255, 0.6), 0 0 30px rgba(0, 123, 255, 0.4);
+        }
+      }
+    
+
+      @keyframes quoteSlide {
+        0% {
+          opacity: 0;
+          transform: translateX(-20px);
+          border-left-width: 0;
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+          border-left-width: 4px;
+        }
+      }
+    
+
+      @keyframes particleFloat {
+        0%, 100% { 
+          transform: translateY(0px) rotate(0deg); 
+          opacity: 0.7; 
+        }
+        50% { 
+          transform: translateY(-20px) rotate(180deg); 
+          opacity: 1; 
+        }
+      }
+    
+
+      @keyframes glow {
+        from { 
+          text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); 
+        }
+        to { 
+          text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 107, 107, 0.3); 
+        }
+      }
+    
+
+      @keyframes timelineSlideIn {
+        from { 
+          opacity: 0; 
+          transform: translateY(50px); 
+        }
+        to { 
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+      }
+    
+
+      @keyframes mathFloat {
+        0%, 100% { 
+          transform: translateY(0) rotate(0deg); 
+          opacity: 0.1; 
+        }
+        50% { 
+          transform: translateY(-30px) rotate(10deg); 
+          opacity: 0.3; 
+        }
+      }
+    
+
+      @keyframes glassmorphism {
+        0% {
+          opacity: 0;
+          backdrop-filter: blur(0px);
+          background: rgba(255, 255, 255, 0);
+        }
+        100% {
+          opacity: 1;
+          backdrop-filter: blur(10px);
+          background: rgba(255, 255, 255, 0.05);
+        }
+      }
+    
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    
+
+      @keyframes shake {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        10%, 30%, 50%, 70%, 90% {
+          transform: translateX(-5px);
+        }
+        20%, 40%, 60%, 80% {
+          transform: translateX(5px);
+        }
+      }
+    
+
+      @keyframes zoomIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    
+
+.theme-effect-mathematical {
+  /* 基础过渡效果 */
+  position: relative;
+}
+
+.theme-effect-mathematical * {
+  transition: all 0.3s ease;
+}
+
+.theme-effect-mathematical *:hover {
+  transition: all 0.2s ease-out;
+}
+
+/* 数学装饰效果 */
+.theme-effect-mathematical::before {
+  content: '∫ ∑ π ∞ ∂ ∇ α β γ δ';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  font-size: 1.5rem;
+  color: rgba(255, 215, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  animation: mathFloat 8s ease-in-out infinite;
+}
+
+.theme-effect-mathematical h1,
+.theme-effect-mathematical h2 {
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.theme-effect-mathematical h1 {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.theme-effect-mathematical h2 {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.theme-effect-mathematical h3 {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.theme-effect-mathematical p {
+  animation: typeWriter 2s steps(40) 1s forwards, blinkCursor 1s infinite;
+}
+
+.theme-effect-mathematical blockquote {
+  animation: glassmorphism 1s ease-out forwards;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.theme-effect-mathematical pre, 
+.theme-effect-mathematical code {
+  animation: codeGlow 2s ease-in-out infinite;
+}
+
+.theme-effect-mathematical {
+  drop-shadow(0 5px 15px rgba(255, 215, 0, 0.2));
+}
+
+.theme-effect-mathematical h1:hover,
+.theme-effect-mathematical h2:hover,
+.theme-effect-mathematical h3:hover {
+  transform: translateY(-5px);
+}
+
+.theme-effect-mathematical blockquote:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+</style>
+</head>
+<body>
+  <div class="theme-effect-mathematical">
+    <!-- effect: mathematical -->
+
+<h1>数学之美 ∫∑π</h1>
+<p>探索数学的优雅与无穷魅力。</p>
+<h2>经典数学公式</h2>
+<h3>欧拉恒等式</h3>
+<p>被誉为&quot;最美的数学公式&quot;：</p>
+<p><strong>e^(iπ) + 1 = 0</strong></p>
+<p>这个公式连接了数学中最重要的五个常数。</p>
+<h3>微积分基本定理</h3>
+<p>∫[a→b] f&#39;(x)dx = f(b) - f(a)</p>
+<h2>数列与级数</h2>
+<h3>斐波那契数列</h3>
+<p>F(n) = F(n-1) + F(n-2)</p>
+<pre><code class="language-javascript">function fibonacci(n) {
+  if (n &lt;= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// 生成前10项
+for (let i = 0; i &lt; 10; i++) {
+  console.log(`F(${i}) = ${fibonacci(i)}`);
+}
+</code></pre>
+<h3>无穷级数</h3>
+<p>π/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9 - ...</p>
+<h2>几何之美</h2>
+<blockquote>
+<p>&quot;几何学是自然的语言&quot; - 伽利略</p>
+</blockquote>
+<ul>
+<li><strong>黄金比例</strong>: φ = (1 + √5)/2 ≈ 1.618</li>
+<li><strong>圆周率</strong>: π = 3.14159265358979...</li>
+<li><strong>自然常数</strong>: e = 2.71828182845904...</li>
+</ul>
+<h2>统计与概率</h2>
+<p>∑(xi - μ)² / N = σ²</p>
+<p>标准差衡量数据的离散程度。</p>
+
+  </div>
+  <script src="/assets/mpmd/theme-effects.js"></script>
+</body>
+</html>
+  

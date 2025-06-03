@@ -1,0 +1,328 @@
+/**
+ * Notion 风格主题 - Notion Style Theme
+ * 仿 Notion 编辑器风格，优雅简洁
+ */
+
+/* 主题色变量定义 */
+:root {
+  --md-primary-color: #2eaadc;
+  --md-secondary-color: #0f7488;
+  --md-accent-color: #7dd3fc;
+  --md-text-color: #37352f;
+  --md-text-secondary: #787774;
+  --md-text-light: #9b9a97;
+  --md-bg-color: #ffffff;
+  --md-bg-secondary: #f7f6f3;
+  --md-bg-tertiary: #f1f1ef;
+  --md-border-color: #e9e9e7;
+  --md-code-bg: #f7f6f3;
+  --md-code-border: #e9e9e7;
+  --md-code-text: #eb5757;
+}
+
+/* 顶层容器样式 */
+body, .container {
+  background: var(--md-bg-color);
+  color: var(--md-text-color);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.5;
+  padding: 6rem 2rem 2rem 2rem;
+  margin: 0 auto;
+  max-width: 700px;
+  min-height: 100vh;
+  font-size: 16px;
+}
+
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin: 2rem 0 0.5rem 0;
+  line-height: 1.2;
+  color: var(--md-text-color);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0 0 2rem 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.875rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--md-text-secondary);
+}
+
+/* 段落和文本 */
+p {
+  margin: 1rem 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* 链接样式 */
+a {
+  color: var(--md-primary-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+a:hover {
+  border-bottom-color: var(--md-primary-color);
+  opacity: 0.8;
+}
+
+/* 列表样式 */
+ul, ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+li::marker {
+  color: var(--md-text-secondary);
+}
+
+ul li {
+  list-style-type: disc;
+}
+
+/* 嵌套列表 */
+li ul, li ol {
+  margin: 0.25rem 0;
+}
+
+/* 引用块 */
+blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--md-primary-color);
+  background: var(--md-bg-secondary);
+  border-radius: 0 8px 8px 0;
+  position: relative;
+}
+
+blockquote::before {
+  content: """;
+  font-size: 3rem;
+  color: var(--md-primary-color);
+  position: absolute;
+  top: -0.5rem;
+  left: 0.5rem;
+  opacity: 0.3;
+}
+
+blockquote p {
+  margin: 0.5rem 0;
+  font-style: italic;
+  color: var(--md-text-secondary);
+}
+
+/* 代码样式 */
+code {
+  padding: 0.2rem 0.4rem;
+  font-size: 85%;
+  background: var(--md-bg-secondary);
+  color: var(--md-code-text);
+  border-radius: 4px;
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 500;
+}
+
+pre {
+  background: var(--md-bg-secondary);
+  border: 1px solid var(--md-border-color);
+  border-radius: 8px;
+  overflow: auto;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+pre::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 12px;
+  height: 12px;
+  background: #ff5f57;
+  border-radius: 50%;
+  box-shadow: 
+    20px 0 0 #ffbd2e,
+    40px 0 0 #28ca42;
+}
+
+pre code {
+  background: transparent;
+  color: var(--md-text-color);
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* 表格样式 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--md-border-color);
+}
+
+th {
+  background: var(--md-bg-secondary);
+  font-weight: 600;
+  color: var(--md-text-color);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td {
+  background: var(--md-bg-color);
+  font-size: 15px;
+}
+
+tr:hover td {
+  background: var(--md-bg-tertiary);
+}
+
+/* 水平分割线 */
+hr {
+  border: none;
+  height: 1px;
+  background: var(--md-border-color);
+  margin: 3rem 0;
+  opacity: 0.5;
+}
+
+/* 图片样式 */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 标注样式 */
+.callout {
+  background: var(--md-bg-secondary);
+  border: 1px solid var(--md-border-color);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid var(--md-primary-color);
+}
+
+/* 徽章样式 */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--md-primary-color);
+  color: white;
+  border-radius: 12px;
+  margin: 0 0.25rem;
+}
+
+/* 高亮文本 */
+mark {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+}
+
+/* 删除线 */
+del {
+  color: var(--md-text-light);
+  text-decoration: line-through;
+}
+
+/* 强调文本 */
+strong {
+  font-weight: 700;
+  color: var(--md-text-color);
+}
+
+em {
+  font-style: italic;
+  color: var(--md-text-secondary);
+}
+
+/* 选择样式 */
+::selection {
+  background: rgba(46, 170, 220, 0.2);
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  body, .container {
+    padding: 2rem 1rem;
+    font-size: 16px;
+  }
+  
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  
+  pre {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  pre::before {
+    display: none;
+  }
+  
+  table {
+    font-size: 14px;
+  }
+  
+  th, td {
+    padding: 0.5rem;
+  }
+}

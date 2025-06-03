@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Markdown Document - 主题(elegant-purple) + 特效(fadeInUp) + 目录 + 响应式</title>
+    <style>
+
+/* Enhanced Markdown Converter Styles */
+* {
+  box-sizing: border-box;
+}
+
+/* 响应式图片 */
+.responsive-image {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+}
+
+/* 目录样式 */
+.table-of-contents {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.table-of-contents h2 {
+  margin: 0 0 1rem 0 !important;
+  color: #374151;
+  font-size: 1.2rem;
+}
+
+.table-of-contents ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.table-of-contents li {
+  margin: 0.5rem 0;
+  list-style-type: none;
+  position: relative;
+}
+
+.table-of-contents li::before {
+  content: "▸";
+  color: #6b7280;
+  margin-right: 0.5rem;
+}
+
+.table-of-contents a {
+  color: #374151;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.table-of-contents a:hover {
+  color: #2563eb;
+}
+
+/* 滚动行为优化 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 代码块增强 */
+pre {
+  position: relative;
+  overflow-x: auto;
+}
+
+pre code {
+  display: block;
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  body, .container {
+    padding: 1rem !important;
+    font-size: 16px;
+  }
+  
+  h1 { font-size: 2rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.25rem !important; }
+  
+  .table-of-contents {
+    padding: 1rem;
+  }
+  
+  pre {
+    margin: 1rem -1rem;
+    border-radius: 0;
+  }
+}
+
+
+/* === 自定义主题 === */
+/**
+ * 优雅紫色主题 - Elegant Purple Theme (重新设计)
+ * 现代化设计，高对比度，优雅配色
+ */
+
+/* 主题色变量定义 */
+:root {
+  --md-primary-color: #7C3AED;
+  --md-secondary-color: #A855F7;
+  --md-accent-color: #C084FC;
+  --md-text-color: #1F2937;
+  --md-text-secondary: #6B7280;
+  --md-bg-color: #FFFFFF;
+  --md-bg-secondary: #F9FAFB;
+  --md-border-color: #E5E7EB;
+  --md-code-bg: #F3F4F6;
+  --md-code-border: #D1D5DB;
+}
+
+/* 顶层容器样式 */
+body, .container {
+  background: var(--md-bg-color);
+  color: var(--md-text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  padding: 2rem;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--md-text-color);
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--md-primary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--md-primary-color), var(--md-accent-color));
+  border-radius: 2px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--md-primary-color);
+  border-left: 4px solid var(--md-primary-color);
+  padding-left: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--md-secondary-color);
+}
+
+h4, h5, h6 {
+  font-size: 1.25rem;
+  color: var(--md-text-secondary);
+}
+
+/* 段落样式 */
+p {
+  margin: 1rem 0;
+  color: var(--md-text-color);
+  line-height: 1.7;
+}
+
+/* 强调和粗体 */
+strong, b {
+  color: var(--md-primary-color);
+  font-weight: 600;
+}
+
+em, i {
+  color: var(--md-secondary-color);
+  font-style: italic;
+}
+
+/* 链接样式 */
+a {
+  color: var(--md-primary-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--md-secondary-color);
+  border-bottom-color: var(--md-secondary-color);
+}
+
+/* 列表样式 */
+ul, ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+li {
+  margin: 0.5rem 0;
+  color: var(--md-text-color);
+}
+
+li::marker {
+  color: var(--md-primary-color);
+}
+
+/* 复选框列表 */
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: var(--md-primary-color);
+}
+
+/* 引用样式 */
+blockquote {
+  border-left: 4px solid var(--md-primary-color);
+  background: var(--md-bg-secondary);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  color: var(--md-text-secondary);
+  font-style: italic;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.1);
+}
+
+blockquote p {
+  margin: 0.5rem 0;
+  color: inherit;
+}
+
+/* 代码块样式 */
+pre {
+  background: var(--md-code-bg);
+  border: 1px solid var(--md-code-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+pre code {
+  background: transparent !important;
+  color: #2D3748 !important;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Consolas", monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 0 !important;
+  border: none !important;
+  display: block;
+  white-space: pre;
+}
+
+/* 行内代码 */
+code {
+  background: var(--md-code-bg);
+  color: var(--md-primary-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Consolas", monospace;
+  font-size: 0.85rem;
+  border: 1px solid var(--md-code-border);
+}
+
+/* 表格样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: var(--md-bg-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background: var(--md-primary-color);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+td {
+  padding: 1rem;
+  border-top: 1px solid var(--md-border-color);
+  color: var(--md-text-color);
+}
+
+tr:nth-child(even) td {
+  background: var(--md-bg-secondary);
+}
+
+tr:hover td {
+  background: rgba(124, 58, 237, 0.05);
+}
+
+/* 分隔线 */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--md-primary-color), transparent);
+  margin: 2rem 0;
+  border-radius: 1px;
+}
+
+/* 图片样式 */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 代码语言标签 */
+pre[class*="language-"]::before {
+  content: attr(class);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--md-primary-color);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 0 8px 0 8px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  body, .container {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  pre {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  table {
+    font-size: 0.875rem;
+  }
+}
+
+    </style>
+</head>
+<body class="theme-effect-fadeInUp">
+    <div class="container">
+<div class="table-of-contents">
+<h2>📋 目录</h2>
+<ul>
+<li><a href="#markdown-to-html-转换器使用指南">Markdown to HTML 转换器使用指南</a></li>
+  <li><a href="#-主要特性">🌟 主要特性</a></li>
+    <li><a href="#基础功能">基础功能</a></li>
+    <li><a href="#增强功能-v20">增强功能 (v2.0)</a></li>
+  <li><a href="#-安装依赖">📦 安装依赖</a></li>
+  <li><a href="#-快速开始">🚀 快速开始</a></li>
+    <li><a href="#单文件转换">单文件转换</a></li>
+      <li><a href="#基础转换器">基础转换器</a></li>
+<li><a href="#基础转换">基础转换</a></li>
+<li><a href="#使用自定义主题">使用自定义主题</a></li>
+      <li><a href="#增强版转换器">增强版转换器</a></li>
+<li><a href="#完整功能转换">完整功能转换</a></li>
+<li><a href="#使用主题特效目录">使用主题+特效+目录</a></li>
+<li><a href="#使用特效">使用特效</a></li>
+<li><a href="#主题-特效组合">主题 + 特效组合</a></li>
+    <li><a href="#批量转换">批量转换</a></li>
+<li><a href="#转换整个目录">转换整个目录</a></li>
+<li><a href="#递归转换子目录">递归转换子目录</a></li>
+<li><a href="#自定义文件匹配模式">自定义文件匹配模式</a></li>
+  <li><a href="#-增强版功能说明">📊 增强版功能说明</a></li>
+    <li><a href="#自动目录生成-toc">自动目录生成 (TOC)</a></li>
+    <li><a href="#响应式设计">响应式设计</a></li>
+  <li><a href="#-可用主题">🎨 可用主题</a></li>
+    <li><a href="#elegant-purple-优雅紫色">elegant-purple (优雅紫色)</a></li>
+    <li><a href="#minimal-dark-极简深色">minimal-dark (极简深色)</a></li>
+    <li><a href="#modern-clean-现代简约">modern-clean (现代简约)</a></li>
+    <li><a href="#github-light-github风格">github-light (GitHub风格)</a></li>
+    <li><a href="#notion-style-notion风格">notion-style (Notion风格)</a></li>
+  <li><a href="#-可用特效">✨ 可用特效</a></li>
+    <li><a href="#particles-粒子特效">particles (粒子特效)</a></li>
+    <li><a href="#deep-space-深空特效">deep-space (深空特效)</a></li>
+    <li><a href="#mathematical-数学特效">mathematical (数学特效)</a></li>
+    <li><a href="#timeline-时间线特效">timeline (时间线特效)</a></li>
+  <li><a href="#-组合使用">🔄 组合使用</a></li>
+<li><a href="#我的文档标题">我的文档标题</a></li>
+  <li><a href="#-文件结构">📁 文件结构</a></li>
+  <li><a href="#-高级功能">🛠️ 高级功能</a></li>
+    <li><a href="#自定义主题开发">自定义主题开发</a></li>
+    <li><a href="#性能优化">性能优化</a></li>
+  <li><a href="#-性能数据">📊 性能数据</a></li>
+  <li><a href="#-故障排除">🔧 故障排除</a></li>
+    <li><a href="#常见问题">常见问题</a></li>
+    <li><a href="#调试方法">调试方法</a></li>
+<li><a href="#查看详细日志">查看详细日志</a></li>
+<li><a href="#检查生成的-html">检查生成的 HTML</a></li>
+  <li><a href="#-贡献指南">📝 贡献指南</a></li>
+  <li><a href="#-许可证">📄 许可证</a></li>
+</ul>
+</div>
+
+<h1 id="markdown-to-html-转换器使用指南">Markdown to HTML 转换器使用指南</h1>
+<p>这是一个功能强大的 Markdown 转 HTML 转换器，支持自定义主题、动态特效、自动目录生成和响应式设计。</p>
+<h2 id="-主要特性">🌟 主要特性</h2>
+<h3 id="基础功能">基础功能</h3>
+<ul>
+<li>✅ <strong>标准 Markdown 转换</strong> - 完整支持 Markdown 语法</li>
+<li>🎨 <strong>自定义主题</strong> - 5种精美主题可选</li>
+<li>✨ <strong>动态特效</strong> - 粒子、深空、数学公式等视觉效果</li>
+<li>🔄 <strong>组合使用</strong> - 主题 + 特效双重渲染</li>
+<li>📦 <strong>批量转换</strong> - 一键处理多个文件</li>
+</ul>
+<h3 id="增强功能-v20">增强功能 (v2.0)</h3>
+<ul>
+<li>📋 <strong>自动目录生成</strong> - 一键创建可导航的文档目录</li>
+<li>📱 <strong>响应式设计</strong> - 完美适配移动端和桌面端</li>
+<li>🔍 <strong>锚点导航</strong> - 标题自动生成锚点链接</li>
+<li>⚡ <strong>性能优化</strong> - 主题缓存与异步处理</li>
+<li>🎯 <strong>批量处理增强</strong> - 递归转换与模式匹配</li>
+</ul>
+<h2 id="-安装依赖">📦 安装依赖</h2>
+<pre><code class="language-bash">npm install tsx marked
+</code></pre>
+<h2 id="-快速开始">🚀 快速开始</h2>
+<h3 id="单文件转换">单文件转换</h3>
+<h4 id="基础转换器">基础转换器</h4>
+<pre><code class="language-bash"># 基础转换
+npx ts-node md2html-new.ts input.md output.html
+
+# 使用自定义主题
+echo &#39;&#39; &gt; example.md
+echo &#39;# Hello World&#39; &gt;&gt; example.md
+npx ts-node md2html-new.ts example.md output.html
+</code></pre>
+<h4 id="增强版转换器">增强版转换器</h4>
+<pre><code class="language-bash"># 完整功能转换
+npx ts-node md2html-enhanced.ts input.md output.html
+
+# 使用主题+特效+目录
+echo &#39;&#39; &gt; example.md
+echo &#39;&#39; &gt;&gt; example.md
+echo &#39;&#39; &gt;&gt; example.md
+echo &#39;&#39; &gt;&gt; example.md
+echo &#39;# Hello World&#39; &gt;&gt; example.md
+npx ts-node md2html-enhanced.ts example.md output.html
+
+# 使用特效
+echo &#39;&#39; &gt; example.md
+echo &#39;# Hello World&#39; &gt;&gt; example.md
+npx tsx md2html-new.ts example.md output.html
+
+# 主题 + 特效组合
+echo &#39;&#39; &gt; example.md
+echo &#39;&#39; &gt;&gt; example.md
+echo &#39;# Hello World&#39; &gt;&gt; example.md
+npx tsx md2html-new.ts example.md output.html
+</code></pre>
+<h3 id="批量转换">批量转换</h3>
+<pre><code class="language-bash"># 转换整个目录
+npx ts-node batch-convert.ts ./docs ./output
+
+# 递归转换子目录
+npx ts-node batch-convert.ts ./docs ./output --recursive
+
+# 自定义文件匹配模式
+npx ts-node batch-convert.ts ./docs ./output --pattern &quot;.*\.md$&quot;
+</code></pre>
+<h2 id="-增强版功能说明">📊 增强版功能说明</h2>
+<h3 id="自动目录生成-toc">自动目录生成 (TOC)</h3>
+<p>在 Markdown 文件顶部添加以下指令开启自动目录生成：</p>
+<pre><code class="language-markdown">
+</code></pre>
+<p>目录会自动从文档中的标题生成，并添加锚点链接，方便在长文档中导航。</p>
+<h3 id="响应式设计">响应式设计</h3>
+<p>开启响应式布局支持，确保在移动端有最佳显示效果：</p>
+<pre><code class="language-markdown">
+</code></pre>
+<p>响应式功能包括：</p>
+<ul>
+<li>自动调整图片尺寸</li>
+<li>表格横向滚动</li>
+<li>字体大小响应式调整</li>
+<li>移动端优化布局</li>
+</ul>
+<h2 id="-可用主题">🎨 可用主题</h2>
+<h3 id="elegant-purple-优雅紫色">elegant-purple (优雅紫色)</h3>
+<ul>
+<li>紫色渐变背景</li>
+<li>现代设计风格</li>
+<li>适合演示和展示</li>
+</ul>
+<pre><code class="language-markdown">
+</code></pre>
+<h3 id="minimal-dark-极简深色">minimal-dark (极简深色)</h3>
+<ul>
+<li>深色背景设计</li>
+<li>蓝色主色调</li>
+<li>适合夜间阅读</li>
+</ul>
+<pre><code class="language-markdown">
+</code></pre>
+<h3 id="modern-clean-现代简约">modern-clean (现代简约)</h3>
+<ul>
+<li>简约现代风格</li>
+<li>清晰的排版布局</li>
+<li>专业商务风格</li>
+</ul>
+<pre><code class="language-markdown">
+</code></pre>
+<h3 id="github-light-github风格">github-light (GitHub风格)</h3>
+<ul>
+<li>GitHub风格设计</li>
+<li>标准代码高亮</li>
+<li>清晰的文档结构</li>
+</ul>
+<pre><code class="language-markdown">
+</code></pre>
+<h3 id="notion-style-notion风格">notion-style (Notion风格)</h3>
+<ul>
+<li>Notion类似设计</li>
+<li>温暖的配色方案</li>
+<li>舒适的阅读体验</li>
+</ul>
+<pre><code class="language-markdown">
+</code></pre>
+<h2 id="-可用特效">✨ 可用特效</h2>
+<h3 id="particles-粒子特效">particles (粒子特效)</h3>
+<p>动态粒子背景，营造科技感氛围</p>
+<pre><code class="language-markdown">
+</code></pre>
+<h3 id="deep-space-深空特效">deep-space (深空特效)</h3>
+<p>星空背景效果，神秘深邃</p>
+<pre><code class="language-markdown">&lt;!-- effect: deep-space --&gt;
+</code></pre>
+<h3 id="mathematical-数学特效">mathematical (数学特效)</h3>
+<p>数学公式动画，适合学术内容</p>
+<pre><code class="language-markdown">
+</code></pre>
+<h3 id="timeline-时间线特效">timeline (时间线特效)</h3>
+<p>时间线动画效果，适合展示历程</p>
+<pre><code class="language-markdown">
+</code></pre>
+<h2 id="-组合使用">🔄 组合使用</h2>
+<p>可以同时使用主题和特效，创造独特的视觉体验：</p>
+<pre><code class="language-markdown">
+
+
+# 我的文档标题
+
+这里是文档内容...
+</code></pre>
+<h2 id="-文件结构">📁 文件结构</h2>
+<pre><code>wechat-docs/
+├── md2html-new.ts          # 单文件转换器
+├── batch-convert.ts        # 批量转换器
+├── themes/                 # 自定义主题目录
+│   ├── elegant-purple.css
+│   └── minimal-dark.css
+├── example/                # 示例文件
+│   ├── combo-demo.md
+│   ├── purple-theme-demo.md
+│   └── minimal-dark-demo.md
+└── output-batch/          # 批量转换输出
+    └── ...
+</code></pre>
+<h2 id="-高级功能">🛠️ 高级功能</h2>
+<h3 id="自定义主题开发">自定义主题开发</h3>
+<ol>
+<li>在 <code>themes/</code> 目录下创建新的 CSS 文件</li>
+<li>在 <code>md2html-new.ts</code> 中注册主题：</li>
+</ol>
+<pre><code class="language-typescript">const customThemes: Record&lt;string, string&gt; = {
+  &#39;elegant-purple&#39;: &#39;themes/elegant-purple.css&#39;,
+  &#39;minimal-dark&#39;: &#39;themes/minimal-dark.css&#39;,
+  &#39;your-theme&#39;: &#39;themes/your-theme.css&#39;  // 添加你的主题
+}
+</code></pre>
+<h3 id="性能优化">性能优化</h3>
+<ul>
+<li>大文件转换建议分批处理</li>
+<li>复杂特效可能影响渲染性能</li>
+<li>建议在生产环境使用外链 CSS/JS</li>
+</ul>
+<h2 id="-性能数据">📊 性能数据</h2>
+<table>
+<thead>
+<tr>
+<th>功能组合</th>
+<th>文件大小</th>
+<th>渲染时间</th>
+<th>内存占用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>纯主题</td>
+<td>10KB</td>
+<td>0.2s</td>
+<td>2MB</td>
+</tr>
+<tr>
+<td>纯特效</td>
+<td>15KB</td>
+<td>0.5s</td>
+<td>5MB</td>
+</tr>
+<tr>
+<td>主题+特效</td>
+<td>20KB</td>
+<td>0.6s</td>
+<td>6MB</td>
+</tr>
+</tbody></table>
+<h2 id="-故障排除">🔧 故障排除</h2>
+<h3 id="常见问题">常见问题</h3>
+<ol>
+<li><strong>主题不生效</strong>: 检查主题文件路径和名称</li>
+<li><strong>特效不显示</strong>: 确认浏览器支持 JavaScript</li>
+<li><strong>转换失败</strong>: 检查 Markdown 文件编码（建议 UTF-8）</li>
+</ol>
+<h3 id="调试方法">调试方法</h3>
+<pre><code class="language-bash"># 查看详细日志
+npx tsx md2html-new.ts input.md output.html 2&gt;&amp;1 | tee conversion.log
+
+# 检查生成的 HTML
+cat output.html | head -50
+</code></pre>
+<h2 id="-贡献指南">📝 贡献指南</h2>
+<ol>
+<li>Fork 本项目</li>
+<li>创建特性分支 (<code>git checkout -b feature/AmazingFeature</code>)</li>
+<li>提交更改 (<code>git commit -m &#39;Add some AmazingFeature&#39;</code>)</li>
+<li>推送到分支 (<code>git push origin feature/AmazingFeature</code>)</li>
+<li>创建 Pull Request</li>
+</ol>
+<h2 id="-许可证">📄 许可证</h2>
+<p>本项目采用 MIT 许可证。详情请见 <a href="LICENSE">LICENSE</a> 文件。</p>
+<hr>
+<p>🎉 <strong>享受创作的乐趣！</strong> 如有问题请提交 Issue 或 PR。</p>
+
+    </div>
+</body>
+</html>

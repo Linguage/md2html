@@ -1,0 +1,59 @@
+{
+  "name": "md2html-converter",
+  "version": "2.0.0",
+  "description": "功能强大的 Markdown 转 HTML 转换器，支持自定义主题、动态特效、自动目录生成和响应式设计",
+  "main": "src/md2html-enhanced.ts",
+  "type": "module",
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "convert": "npx ts-node src/md2html-enhanced.ts",
+    "convert-basic": "npx ts-node src/md2html-new.ts",
+    "batch": "npx ts-node src/batch-convert.ts",
+    "demo": "npm run convert examples/ultimate-test.md output/ultimate-test.html",
+    "demo-all": "npm run batch examples/ output/",
+    "test": "npm run demo && echo '✅ 测试完成，请查看 output/ultimate-test.html'",
+    "type-check": "npx tsc --noEmit",
+    "clean": "rm -rf output/ *.html test-*/",
+    "release": "./scripts/release.sh",
+    "dev": "npx ts-node",
+    "help": "node scripts/cli.js"
+  },
+  "bin": {
+    "md2html": "./src/md2html-enhanced.ts",
+    "md2html-basic": "./src/md2html-new.ts",
+    "md2html-batch": "./src/batch-convert.ts"
+  },
+  "keywords": [
+    "markdown",
+    "html",
+    "converter",
+    "theme",
+    "effects",
+    "responsive",
+    "toc",
+    "批量转换",
+    "主题",
+    "特效"
+  ],
+  "author": "md2html-team",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^12.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/md2html-converter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/md2html-converter/issues"
+  },
+  "homepage": "https://github.com/your-username/md2html-converter#readme"
+}

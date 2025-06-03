@@ -1,0 +1,398 @@
+/**
+ * 优雅紫色主题 - Elegant Purple Theme (重新设计)
+ * 现代化设计，高对比度，优雅配色
+ */
+
+/* 主题色变量定义 */
+:root {
+  --md-primary-color: #7C3AED;
+  --md-secondary-color: #A855F7;
+  --md-accent-color: #C084FC;
+  --md-text-color: #1F2937;
+  --md-text-secondary: #6B7280;
+  --md-bg-color: #FFFFFF;
+  --md-bg-secondary: #F9FAFB;
+  --md-border-color: #E5E7EB;
+  --md-code-bg: #F3F4F6;
+  --md-code-border: #D1D5DB;
+}
+
+/* 顶层容器样式 */
+body, .container {
+  background: var(--md-bg-color);
+  color: var(--md-text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  padding: 2rem;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* 一级标题样式 */
+h1 {
+  color: var(--md-primary-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  padding: 1rem 0;
+  background: linear-gradient(135deg, var(--md-primary-color), var(--md-secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--md-primary-color), var(--md-secondary-color));
+  border-radius: 2px;
+}
+
+/* 二级标题样式 */
+h2 {
+  color: var(--md-primary-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid var(--md-primary-color);
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.05), transparent);
+  padding: 0.8rem 0 0.8rem 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+/* 三级标题样式 */
+h3 {
+  color: var(--md-secondary-color);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.8rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+h3::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  color: var(--md-accent-color);
+  font-size: 1rem;
+}
+
+/* 四级标题样式 */
+h4 {
+  color: var(--md-text-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1.2rem 0 0.6rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--md-accent-color);
+}
+
+/* 五级标题样式 */
+h5 {
+  color: var(--md-text-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem 0;
+  opacity: 0.9;
+}
+
+/* 六级标题样式 */
+h6 {
+  color: var(--md-text-color);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.8rem 0 0.4rem 0;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 图片样式 */
+image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
+  margin: 1.5rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.25);
+}
+
+/* 引用样式 */
+blockquote {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(167, 139, 250, 0.05));
+  border-left: 4px solid var(--md-primary-color);
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  border-radius: 0 12px 12px 0;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.08);
+}
+
+blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  font-size: 3rem;
+  color: var(--md-accent-color);
+  opacity: 0.3;
+}
+
+/* 引用段落样式 */
+blockquote_p {
+  margin: 0;
+  font-style: italic;
+  color: var(--md-text-color);
+  line-height: 1.8;
+}
+
+/* 段落样式 */
+p {
+  margin: 1rem 0;
+  line-height: 1.8;
+  color: var(--md-text-color);
+  text-align: justify;
+}
+
+/* 分割线样式 */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--md-accent-color), transparent);
+  margin: 2rem 0;
+  border-radius: 1px;
+}
+
+/* 行内代码样式 */
+codespan {
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--md-primary-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: "Fira Code", "Monaco", "Consolas", monospace;
+  font-size: 0.9em;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* 斜体样式 */
+em {
+  color: var(--md-secondary-color);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* 粗体样式 */
+strong {
+  color: var(--md-primary-color);
+  font-weight: 700;
+}
+
+/* 链接样式 */
+link {
+  color: var(--md-primary-color);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+link:hover {
+  color: var(--md-secondary-color);
+  border-bottom-color: var(--md-accent-color);
+}
+
+/* 微信链接样式 */
+wx_link {
+  color: #07C160;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* 有序列表样式 */
+ol {
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+ol li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+/* 无序列表样式 */
+ul {
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+ul li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  position: relative;
+}
+
+ul li::marker {
+  color: var(--md-accent-color);
+  font-size: 1.2em;
+}
+
+/* 列表项样式 */
+listitem {
+  color: var(--md-text-color);
+  line-height: 1.6;
+}
+
+/* 代码块样式 */
+code {
+  background: #1F2937;
+  color: #F9FAFB;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: "Fira Code", "Monaco", "Consolas", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 代码块外层样式 */
+code_pre {
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+code_pre::before {
+  content: '⚡';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  background: var(--md-primary-color);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  z-index: 1;
+}
+
+/* 行内公式样式 */
+inline_katex {
+  color: var(--md-primary-color);
+  background: rgba(139, 92, 246, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* 公式块样式 */
+block_katex {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(139, 92, 246, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+/* GFM note 样式 */
+blockquote_note {
+  background: rgba(59, 130, 246, 0.1);
+  border-left-color: #3B82F6;
+}
+
+/* GFM tip 样式 */
+blockquote_tip {
+  background: rgba(16, 185, 129, 0.1);
+  border-left-color: #10B981;
+}
+
+/* GFM important 样式 */
+blockquote_important {
+  background: rgba(139, 92, 246, 0.1);
+  border-left-color: var(--md-primary-color);
+}
+
+/* GFM warning 样式 */
+blockquote_warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-left-color: #F59E0B;
+}
+
+/* GFM caution 样式 */
+blockquote_caution {
+  background: rgba(239, 68, 68, 0.1);
+  border-left-color: #EF4444;
+}
+
+/* GFM 通用标题 */
+blockquote_title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+/* GFM note 标题 */
+blockquote_title_note {
+  color: #3B82F6;
+}
+
+/* GFM tip 标题 */
+blockquote_title_tip {
+  color: #10B981;
+}
+
+/* GFM important 标题 */
+blockquote_title_important {
+  color: var(--md-primary-color);
+}
+
+/* GFM warning 标题 */
+blockquote_title_warning {
+  color: #F59E0B;
+}
+
+/* GFM caution 标题 */
+blockquote_title_caution {
+  color: #EF4444;
+}
+
+/* GFM note 段落样式 */
+blockquote_p_note {
+  color: #1E40AF;
+}
+
+/* GFM tip 段落样式 */
+blockquote_p_tip {
+  color: #047857;
+}
+
+/* GFM important 段落样式 */
+blockquote_p_important {
+  color: #7C3AED;
+}
+
+/* GFM warning 段落样式 */
+blockquote_p_warning {
+  color: #D97706;
+}
+
+/* GFM caution 段落样式 */
+blockquote_p_caution {
+  color: #DC2626;
+}

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Markdown with Custom Theme</title>
+  <style>/**
+ * 优雅紫色主题 - Elegant Purple Theme
+ * 按 Alt/Option + Shift + F 可格式化
+ * 如需使用主题色，请使用 var(--md-primary-color) 代替颜色值
+ * 如：color: var(--md-primary-color);
+ *
+ * 召集令：如果你有好看的主题样式，欢迎分享，让更多人能够使用到你的主题。
+ * 提交区：https://github.com/doocs/md/discussions/426
+ */
+
+/* 主题色变量定义 */
+:root {
+  --md-primary-color: #8B5CF6;
+  --md-secondary-color: #A78BFA;
+  --md-accent-color: #C4B5FD;
+  --md-text-color: #374151;
+  --md-bg-color: #FAFAFA;
+}
+
+/* 顶层容器样式 */
+container {
+  background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+  color: var(--md-text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.8;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.1);
+}
+
+/* 一级标题样式 */
+h1 {
+  color: var(--md-primary-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  padding: 1rem 0;
+  background: linear-gradient(135deg, var(--md-primary-color), var(--md-secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--md-primary-color), var(--md-secondary-color));
+  border-radius: 2px;
+}
+
+/* 二级标题样式 */
+h2 {
+  color: var(--md-primary-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid var(--md-primary-color);
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.05), transparent);
+  padding: 0.8rem 0 0.8rem 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+/* 三级标题样式 */
+h3 {
+  color: var(--md-secondary-color);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.8rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+h3::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  color: var(--md-accent-color);
+  font-size: 1rem;
+}
+
+/* 四级标题样式 */
+h4 {
+  color: var(--md-text-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1.2rem 0 0.6rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--md-accent-color);
+}
+
+/* 五级标题样式 */
+h5 {
+  color: var(--md-text-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem 0;
+  opacity: 0.9;
+}
+
+/* 六级标题样式 */
+h6 {
+  color: var(--md-text-color);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.8rem 0 0.4rem 0;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 图片样式 */
+image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
+  margin: 1.5rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.25);
+}
+
+/* 引用样式 */
+blockquote {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(167, 139, 250, 0.05));
+  border-left: 4px solid var(--md-primary-color);
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  border-radius: 0 12px 12px 0;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.08);
+}
+
+blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  font-size: 3rem;
+  color: var(--md-accent-color);
+  opacity: 0.3;
+}
+
+/* 引用段落样式 */
+blockquote_p {
+  margin: 0;
+  font-style: italic;
+  color: var(--md-text-color);
+  line-height: 1.8;
+}
+
+/* 段落样式 */
+p {
+  margin: 1rem 0;
+  line-height: 1.8;
+  color: var(--md-text-color);
+  text-align: justify;
+}
+
+/* 分割线样式 */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--md-accent-color), transparent);
+  margin: 2rem 0;
+  border-radius: 1px;
+}
+
+/* 行内代码样式 */
+codespan {
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--md-primary-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: "Fira Code", "Monaco", "Consolas", monospace;
+  font-size: 0.9em;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* 斜体样式 */
+em {
+  color: var(--md-secondary-color);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* 粗体样式 */
+strong {
+  color: var(--md-primary-color);
+  font-weight: 700;
+}
+
+/* 链接样式 */
+link {
+  color: var(--md-primary-color);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+link:hover {
+  color: var(--md-secondary-color);
+  border-bottom-color: var(--md-accent-color);
+}
+
+/* 微信链接样式 */
+wx_link {
+  color: #07C160;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* 有序列表样式 */
+ol {
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+ol li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+/* 无序列表样式 */
+ul {
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+ul li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  position: relative;
+}
+
+ul li::marker {
+  color: var(--md-accent-color);
+  font-size: 1.2em;
+}
+
+/* 列表项样式 */
+listitem {
+  color: var(--md-text-color);
+  line-height: 1.6;
+}
+
+/* 代码块样式 */
+code {
+  background: #1F2937;
+  color: #F9FAFB;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: "Fira Code", "Monaco", "Consolas", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 代码块外层样式 */
+code_pre {
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+code_pre::before {
+  content: '⚡';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  background: var(--md-primary-color);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  z-index: 1;
+}
+
+/* 行内公式样式 */
+inline_katex {
+  color: var(--md-primary-color);
+  background: rgba(139, 92, 246, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* 公式块样式 */
+block_katex {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(139, 92, 246, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+/* GFM note 样式 */
+blockquote_note {
+  background: rgba(59, 130, 246, 0.1);
+  border-left-color: #3B82F6;
+}
+
+/* GFM tip 样式 */
+blockquote_tip {
+  background: rgba(16, 185, 129, 0.1);
+  border-left-color: #10B981;
+}
+
+/* GFM important 样式 */
+blockquote_important {
+  background: rgba(139, 92, 246, 0.1);
+  border-left-color: var(--md-primary-color);
+}
+
+/* GFM warning 样式 */
+blockquote_warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-left-color: #F59E0B;
+}
+
+/* GFM caution 样式 */
+blockquote_caution {
+  background: rgba(239, 68, 68, 0.1);
+  border-left-color: #EF4444;
+}
+
+/* GFM 通用标题 */
+blockquote_title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+/* GFM note 标题 */
+blockquote_title_note {
+  color: #3B82F6;
+}
+
+/* GFM tip 标题 */
+blockquote_title_tip {
+  color: #10B981;
+}
+
+/* GFM important 标题 */
+blockquote_title_important {
+  color: var(--md-primary-color);
+}
+
+/* GFM warning 标题 */
+blockquote_title_warning {
+  color: #F59E0B;
+}
+
+/* GFM caution 标题 */
+blockquote_title_caution {
+  color: #EF4444;
+}
+
+/* GFM note 段落样式 */
+blockquote_p_note {
+  color: #1E40AF;
+}
+
+/* GFM tip 段落样式 */
+blockquote_p_tip {
+  color: #047857;
+}
+
+/* GFM important 段落样式 */
+blockquote_p_important {
+  color: #7C3AED;
+}
+
+/* GFM warning 段落样式 */
+blockquote_p_warning {
+  color: #D97706;
+}
+
+/* GFM caution 段落样式 */
+blockquote_p_caution {
+  color: #DC2626;
+}
+</style>
+</head>
+<body>
+  <div class="">
+    <!-- theme: elegant-purple -->
+
+<h1>优雅紫色主题演示 ✨</h1>
+<p>这是使用<strong>优雅紫色主题</strong>的 Markdown 示例，展示了精美的紫色渐变和现代设计风格。</p>
+<h2>功能特点</h2>
+<ul>
+<li>🎨 优雅的紫色渐变设计</li>
+<li>✨ 精美的视觉效果</li>
+<li>📱 响应式布局</li>
+<li>🔤 精心设计的字体排版</li>
+</ul>
+<h3>代码示例</h3>
+<pre><code class="language-python">def fibonacci(n):
+    &quot;&quot;&quot;计算斐波那契数列&quot;&quot;&quot;
+    if n &lt;= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# 输出前10个斐波那契数
+for i in range(10):
+    print(f&quot;F({i}) = {fibonacci(i)}&quot;)
+</code></pre>
+<h3>引用块示例</h3>
+<blockquote>
+<p>&quot;设计不仅仅是看起来如何，感觉如何。设计是它如何工作。&quot; </p>
+<p>—— Steve Jobs</p>
+</blockquote>
+<h3>列表示例</h3>
+<ol>
+<li><strong>一级列表项</strong><ul>
+<li>二级无序列表</li>
+<li>另一个二级项目</li>
+</ul>
+</li>
+<li><strong>另一个一级项</strong><ul>
+<li>更多内容</li>
+<li>使用 <code>行内代码</code> 展示</li>
+</ul>
+</li>
+</ol>
+<h3>链接和强调</h3>
+<p>这里有一个 <a href="https://github.com">链接示例</a>，还有 <em>斜体文字</em> 和 <strong>粗体文字</strong>。</p>
+<h3>数学公式</h3>
+<p>行内公式：$E = mc^2$</p>
+<p>块级公式：
+$$\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}$$</p>
+<hr>
+<p><strong>总结</strong>：优雅紫色主题为你的文档提供了专业而美观的视觉体验。</p>
+
+  </div>
+  <script src="/assets/mpmd/theme-effects.js"></script>
+</body>
+</html>
