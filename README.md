@@ -2,9 +2,13 @@
 
 一个功能强大的 Markdown 转 HTML 转换器，支持自定义主题、动态特效、自动目录生成和响应式设计。
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=flat&logo=github)](https://github.com/Linguage/md2html)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## ✨ 主要特性
 
 ### 基础功能
+
 - ✅ **标准 Markdown 转换** - 完整支持 Markdown 语法
 - 🎨 **5种精美主题** - elegant-purple, minimal-dark, modern-clean, github-light, notion-style
 - ✨ **动态特效** - particles, deep-space, mathematical, timeline 等视觉效果
@@ -12,11 +16,24 @@
 - 📦 **批量转换** - 一键处理多个文件
 
 ### 增强功能 (v2.0)
+
 - 📋 **自动目录生成** - 一键创建可导航的文档目录
 - 📱 **响应式设计** - 完美适配移动端和桌面端
 - 🔍 **锚点导航** - 标题自动生成锚点链接
 - ⚡ **性能优化** - 主题缓存与异步处理
 - 🎯 **批量处理增强** - 递归转换与模式匹配
+
+## 🔍 项目背景
+
+MD2HTML 是一个专为博客写作者、技术文档撰写人员和内容创作者打造的工具，旨在让 Markdown 文档转换为精美的 HTML 网页变得简单高效。无需复杂的配置，只需简单的指令，即可获得专业水准的展示效果。
+
+## 🌟 在线示例
+
+查看转换效果示例：
+- [全面功能演示](https://github.com/Linguage/md2html/blob/main/examples/comprehensive-demo.html)
+- [深空主题效果](https://github.com/Linguage/md2html/blob/main/examples/deep-space-demo.html)
+- [数学公式主题](https://github.com/Linguage/md2html/blob/main/examples/mathematical-demo.html)
+- [现代简洁主题](https://github.com/Linguage/md2html/blob/main/examples/modern-clean-demo.html)
 
 ## 🚀 快速开始
 
@@ -83,7 +100,7 @@ npm run demo
 
 ## 📁 项目结构
 
-```
+```bash
 md2html/
 ├── src/                    # 源代码
 │   ├── md2html-enhanced.ts # 增强版转换器
@@ -125,12 +142,18 @@ md2html/
 
 ## 🤝 贡献
 
-欢迎提交 Issue 和 Pull Request！
+欢迎提交 [Issue](https://github.com/Linguage/md2html/issues) 和 [Pull Request](https://github.com/Linguage/md2html/pulls)！
 
 ## 📄 许可证
 
-MIT License
+[MIT License](https://github.com/Linguage/md2html/blob/main/LICENSE)
 
 ---
 
-📖 详细使用指南请查看 [docs/CONVERTER-GUIDE.md](docs/CONVERTER-GUIDE.md)
+📖 详细使用指南请查看 [docs/CONVERTER-GUIDE.md](https://github.com/Linguage/md2html/blob/main/docs/CONVERTER-GUIDE.md)
+
+## 📊 GitHub 项目信息
+
+- **主要语言**: [TypeScript (56.9%)](https://github.com/Linguage/md2html/search?l=typescript), [CSS (33.5%)](https://github.com/Linguage/md2html/search?l=css), [JavaScript (7.8%)](https://github.com/Linguage/md2html/search?l=javascript)
+- **项目主页**: [github.com/Linguage/md2html](https://github.com/Linguage/md2html)
+- **更新日期**: 2025年6月3日
