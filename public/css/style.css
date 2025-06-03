@@ -1,0 +1,265 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全局亮色/暗色模式变量 */
+:root {
+    --app-bg-color: #f5f5f5;
+    --app-text-color: #333;
+    --app-header-bg: #24292e;
+    --app-header-text: #fff;
+    --app-editor-bg: #f8f8f8;
+    --app-border-color: #ddd;
+    --app-preview-bg: #fff;
+}
+
+/* 暗色模式变量 */
+.dark-mode {
+    --app-bg-color: #1a1a1a;
+    --app-text-color: #eee;
+    --app-header-bg: #121212;
+    --app-header-text: #ddd;
+    --app-editor-bg: #2d2d2d;
+    --app-border-color: #444;
+    --app-preview-bg: #2d2d2d;
+}
+
+body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--app-bg-color);
+    color: var(--app-text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 主布局 */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--app-header-bg);
+    color: var(--app-header-text);
+    flex-shrink: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    width: 100%;
+    height: calc(100vh - 110px); /* 减去头部和底部的高度 */
+}
+
+.editor-pane, .preview-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 40%;
+    border-right: 1px solid var(--app-border-color);
+    overflow: hidden; /* 确保内容不会溢出 */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.preview-pane {
+    border-right: none;
+    background-color: var(--app-preview-bg);
+}
+
+.pane-header {
+    padding: 0.5rem 1rem;
+    background-color: var(--app-header-bg);
+    color: var(--app-header-text);
+    border-bottom: 1px solid var(--app-border-color);
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.editor-container {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex; /* 确保子元素能够填充容器 */
+    flex-direction: column;
+}
+
+.markdown-input {
+    width: 100%;
+    height: 100% !important;
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 14px;
+    border: none;
+    resize: none;
+    outline: none;
+    background-color: var(--app-editor-bg);
+    color: var(--app-text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.preview-content {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: var(--app-preview-bg);
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.3s;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: var(--app-header-bg);
+    color: var(--app-header-text);
+    border-top: 1px solid var(--app-border-color);
+    font-size: 0.85rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 工具栏 */
+.toolbar {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background-color: #4a5568;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-btn:hover {
+    background-color: #2d3748;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--app-bg-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10; /* 确保菜单显示在粒子效果之上 */
+    border-radius: 4px;
+    overflow: hidden;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a {
+    color: var(--app-text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--app-header-bg);
+    color: var(--app-header-text);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* 链接样式 */
+.footer a {
+    color: var(--app-header-text);
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.separator {
+    margin: 0 5px;
+    color: var(--app-header-text);
+    opacity: 0.6;
+}
+
+/* CodeMirror 样式覆盖 */
+.CodeMirror {
+    height: 100% !important;
+    width: 100% !important;
+    font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    flex: 1;
+}
+
+/* 确保 CodeMirror 占满容器 */
+.editor-container .CodeMirror {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100% !important;
+}
+
+/* 改善 CodeMirror 在移动设备上的显示 */
+@media (max-width: 768px) {
+    .CodeMirror {
+        font-size: 12px;
+    }
+}
+
+/* 响应式样式 */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .editor-pane, .preview-pane {
+        height: 50%;
+        border-right: none;
+    }
+    
+    .editor-pane {
+        border-bottom: 1px solid var(--app-border-color);
+    }
+    
+    .toolbar {
+        flex-wrap: wrap;
+    }
+}

@@ -1,31 +1,43 @@
 # MD2HTML Converter
 
-一个功能强大的 Markdown 转 HTML 转换器，支持自定义主题、动态特效、自动目录生成和响应式设计。
+一个功能强大的 Markdown 转 HTML 转换器，提供**在线编辑器**和**命令行工具**双重体验，支持实时预览、自定义主题、动态特效和响应式设计。
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=flat&logo=github)](https://github.com/Linguage/md2html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-2.0.0-green)](https://github.com/Linguage/md2html)
 
 ## ✨ 主要特性
 
-### 基础功能
+### 🌐 Web界面功能
+
+- 🖥️ **在线编辑器** - 浏览器内实时编辑和预览 Markdown
+- ⚡ **实时预览** - 左侧编辑，右侧即时显示转换结果
+- 🌙 **深浅色模式** - 内置深色/浅色主题切换
+- 🎨 **主题选择器** - 5种精美主题实时切换预览
+- ✨ **特效预览** - 动态特效即时应用和预览
+- 📱 **响应式界面** - 完美适配桌面端和移动设备
+- 💾 **导出功能** - 一键导出为HTML文件
+- 📋 **快速导入** - 支持文件拖拽和粘贴导入
+
+### 🛠️ 命令行功能
 
 - ✅ **标准 Markdown 转换** - 完整支持 Markdown 语法
 - 🎨 **5种精美主题** - elegant-purple, minimal-dark, modern-clean, github-light, notion-style
 - ✨ **动态特效** - particles, deep-space, mathematical, timeline 等视觉效果
 - 🔄 **组合使用** - 主题 + 特效双重渲染
-- 📦 **批量转换** - 一键处理多个文件
+- 📦 **批量转换** - 一键处理多个文件和目录
 
-### 增强功能 (v2.0)
+### 🚀 增强功能 (v2.0)
 
 - 📋 **自动目录生成** - 一键创建可导航的文档目录
 - 📱 **响应式设计** - 完美适配移动端和桌面端
 - 🔍 **锚点导航** - 标题自动生成锚点链接
 - ⚡ **性能优化** - 主题缓存与异步处理
-- 🎯 **批量处理增强** - 递归转换与模式匹配
+- 🎯 **实时编辑体验** - 所见即所得的编辑环境
 
 ## 🔍 项目背景
 
-MD2HTML 是一个专为博客写作者、技术文档撰写人员和内容创作者打造的工具，旨在让 Markdown 文档转换为精美的 HTML 网页变得简单高效。无需复杂的配置，只需简单的指令，即可获得专业水准的展示效果。
+MD2HTML 是一个专为博客写作者、技术文档撰写人员和内容创作者打造的现代化工具。既提供了方便的在线编辑器供实时预览和快速编辑，也提供了强大的命令行工具用于批量处理和自动化工作流。
 
 ## 🌟 在线示例
 
@@ -37,13 +49,38 @@ MD2HTML 是一个专为博客写作者、技术文档撰写人员和内容创作
 
 ## 🚀 快速开始
 
-### 安装依赖
+### 🌐 Web界面使用（推荐）
+
+**启动服务器**
+
+```bash
+# 安装依赖
+npm install
+
+# 启动Web服务器
+npm start
+```
+
+**打开浏览器**
+
+访问：`http://localhost:8800`
+
+**开始使用**
+
+- 在左侧编辑器输入Markdown内容
+- 右侧实时预览转换结果
+- 使用顶部工具栏选择主题和特效
+- 点击导出按钮保存HTML文件
+
+### 💻 命令行使用
+
+#### 安装依赖
 
 ```bash
 npm install
 ```
 
-### 单文件转换
+#### 单文件转换
 
 ```bash
 # 增强版转换器（推荐）
