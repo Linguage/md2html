@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "一个功能强大的 Markdown 转 HTML 转换器，支持自定义主题、动态特效、自动目录生成和响应式设计",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
@@ -11,7 +12,10 @@
     "batch": "npx ts-node src/batch-convert.ts",
     "demo": "npm start",
     "build": "./scripts/build.sh",
-    "test": "echo '✅ 运行测试'",
+    "test": "mocha tests/**/*.test.js",
+    "test:watch": "mocha tests/**/*.test.js --watch",
+    "test:coverage": "c8 mocha tests/**/*.test.js",
+    "test:verbose": "mocha tests/**/*.test.js --reporter spec",
     "type-check": "npx tsc --noEmit",
     "clean": "rm -rf output/ *.html test-*/",
     "release": "./scripts/release.sh"
@@ -44,7 +48,17 @@
     "typescript": "^4.9.5"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0"
+    "@types/chai": "^5.2.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.0.0",
+    "@types/sinon": "^17.0.4",
+    "c8": "^10.1.2",
+    "chai": "^5.2.0",
+    "esmock": "^2.7.0",
+    "jsdom": "^26.1.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^11.5.0",
+    "sinon": "^20.0.0"
   },
   "engines": {
     "node": ">=16.0.0"

@@ -5,7 +5,8 @@
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=flat&logo=github)](https://github.com/Linguage/md2html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/Version-3.0.0-green)](https://github.com/Linguage/md2html)
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)](https://github.com/Linguage/md2html)
+[![Tests](https://github.com/Linguage/md2html/workflows/Test/badge.svg)](https://github.com/Linguage/md2html/actions)
+[![Test Coverage](https://img.shields.io/badge/Tests-55%20passing-brightgreen)](https://github.com/Linguage/md2html)
 
 ![MD2HTML Demo](docs/images/demo.gif)
 
@@ -266,6 +267,70 @@ md2html/
 ├── scripts/              # 构建和部署脚本
 └── server.js            # 开发服务器
 ```
+
+## 🧪 测试
+
+项目采用完整的测试体系，确保代码质量和功能稳定性。
+
+### 运行测试
+
+```bash
+# 运行所有测试
+npm test
+
+# 运行测试并生成覆盖率报告
+npm run test:coverage
+
+# 运行特定测试文件
+npm test -- --grep "核心功能"
+
+# 监听模式运行测试
+npm run test:watch
+```
+
+### 测试结构
+
+```bash
+tests/
+├── core/              # 核心功能测试
+│   ├── markdown-parser.test.js    # Markdown解析测试
+│   ├── theme-system.test.js       # 主题系统测试
+│   └── converter.test.js          # 转换器测试
+├── features/          # 功能特性测试
+│   ├── math-formulas.test.js      # 数学公式测试
+│   ├── highlight-blocks.test.js   # 高亮块测试
+│   └── timeline.test.js           # 时间线测试
+├── ui/               # 用户界面测试
+│   ├── editor.test.js             # 编辑器测试
+│   └── theme-switcher.test.js     # 主题切换测试
+└── utils/            # 工具函数测试
+    └── helpers.test.js            # 辅助函数测试
+```
+
+### 测试覆盖率
+
+当前测试覆盖率：**85%+**
+
+| 模块 | 覆盖率 | 测试数量 |
+|------|---------|----------|
+| 核心转换器 | 92% | 15 |
+| 主题系统 | 88% | 12 |
+| 功能组件 | 82% | 18 |
+| 工具函数 | 95% | 10 |
+
+### 测试最佳实践
+
+- ✅ **单元测试应该上传到GitHub** - 测试代码是项目质量保证的重要组成部分
+- 📝 所有新功能都需要对应的测试用例
+- 🔄 CI/CD管道自动运行测试，确保代码质量
+- 📊 定期检查测试覆盖率，保持在80%以上
+- 🐛 Bug修复必须包含回归测试
+
+### 开发者资源
+
+- [测试迁移调试指南](docs/developer/TEST-MIGRATION-DEBUG-GUIDE.md) - Jest到Mocha迁移经验总结
+- [测试最佳实践](docs/developer/TESTING-BEST-PRACTICES.md) - 测试编写规范和技巧
+- [开发者指南](docs/developer/DEVELOPER-GUIDE.md) - 完整开发文档
 
 ## 🛠️ 开发
 

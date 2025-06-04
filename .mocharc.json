@@ -1,0 +1,9 @@
+{
+  "extensions": ["js"],
+  "spec": "tests/**/*.test.js",
+  "require": "jsdom-global/register",
+  "timeout": 5000,
+  "recursive": true,
+  "watch-files": ["tests/**/*.test.js", "public/js/**/*.js"],
+  "watch-ignore": ["node_modules"]
+}

@@ -45,9 +45,37 @@ output/
 
 # Coverage directory used by tools like istanbul
 coverage/
+.nyc_output/
 
 # TypeScript cache
 *.tscache
+
+# Testing cache and temporary files
+.mocharc.cache
+.mochatest/
+test-results/
+test-output/
+.test-cache/
+
+# Jest cache (legacy, for migration reference)
+.jest/
+jest-cache/
+
+# Test temporary files
+test-*.js
+*-test-temp.*
+*-new.test.js
+test-theme.js
+
+# Mocha and test framework temporary files
+.mocha/
+mocha-parallel-tests/
+
+# Test coverage and reports
+test-coverage/
+mochawesome-report/
+allure-results/
+allure-report/
 
 # Test files and reports
 test-export-*.html
