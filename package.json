@@ -65,10 +65,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/md2html-converter.git"
+    "url": "https://github.com/Linguage/md2html.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/md2html-converter/issues"
+    "url": "https://github.com/Linguage/md2html/issues"
   },
-  "homepage": "https://github.com/your-username/md2html-converter#readme"
+  "homepage": "https://github.com/Linguage/md2html#readme"
 }

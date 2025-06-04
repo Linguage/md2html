@@ -116,6 +116,6 @@ npm run clean
 
 ---
 
-📖 **完整文档**：查看 [docs/CONVERTER-GUIDE.md](docs/CONVERTER-GUIDE.md)
+📖 **完整文档**：查看 [CONVERTER-GUIDE.md](CONVERTER-GUIDE.md)
 
 🎉 **开始创作**：享受Markdown到HTML的转换之旅！

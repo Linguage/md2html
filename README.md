@@ -8,8 +8,6 @@
 [![Tests](https://github.com/Linguage/md2html/workflows/Test/badge.svg)](https://github.com/Linguage/md2html/actions)
 [![Test Coverage](https://img.shields.io/badge/Tests-55%20passing-brightgreen)](https://github.com/Linguage/md2html)
 
-![MD2HTML Demo](docs/images/demo.gif)
-
 ## 📢 最新更新日志
 
 ### 2025年6月4日更新
@@ -19,7 +17,7 @@
 - 🐛 修复：深色模式下的菜单显示问题
 - ✨ 改进：菜单性能和响应速度
 
-[查看完整更新日志](CHANGELOG.md)
+更多更新详情请查看项目状态报告
 
 ## 🎉 v3.0 重大更新
 
@@ -91,12 +89,12 @@ MD2HTML 是一个专为博客写作者、技术文档撰写人员、学术研究
 
 查看转换效果示例：
 
-- [功能测试演示](examples/feature-test.md) - 展示所有新功能
-- [学术论文示例](examples/academic-paper.md) - 学术写作模板
-- [数学公式演示](examples/math-formulas.md) - 数学公式展示
-- [时间线演示](examples/timeline-demo.md) - 时间线布局
-- [多列布局示例](examples/multi-column.md) - 卡片布局系统
-- [高亮块演示](examples/highlight-blocks.md) - 自定义高亮块
+- [功能测试演示](examples/tests/feature-test.md) - 展示所有新功能
+- [学术论文示例](examples/basic/academic-paper.md) - 学术写作模板
+- [数学公式演示](examples/basic/math-formulas.md) - 数学公式展示
+- [时间线演示](examples/effects/timeline-demo.md) - 时间线布局
+- [多列布局示例](examples/basic/multi-column.md) - 卡片布局系统
+- [高亮块演示](examples/basic/highlight-blocks.md) - 自定义高亮块
 
 ## 🚀 快速开始
 
@@ -106,7 +104,7 @@ MD2HTML 是一个专为博客写作者、技术文档撰写人员、学术研究
 
 ```bash
 # 最简单的启动方式（推荐）
-cd /Users/henri/Documents/Blog/md2html && node server.js
+node server.js
 
 # 或者传统方式
 npm install
@@ -369,7 +367,7 @@ tests/
 
 ## 📄 许可证
 
-[MIT License](https://github.com/Linguage/md2html/blob/main/LICENSE)
+[MIT License](LICENSE)
 
 ---
 
