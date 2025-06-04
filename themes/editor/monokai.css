@@ -1,0 +1,61 @@
+/* Monokai Editor Theme */
+
+.editor-container.monokai {
+    background: #272822;
+}
+
+.editor-container.monokai .markdown-input {
+    background: #272822;
+    color: #f8f8f2;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    border: none;
+    outline: none;
+    padding: 16px;
+    resize: none;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    caret-color: #f92672;
+}
+
+.editor-container.monokai .markdown-input::selection {
+    background: #49483e;
+}
+
+.editor-container.monokai .editor-line-numbers {
+    background: #272822;
+    color: #90908a;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 16px 8px;
+    border-right: 1px solid #3e3d32;
+    user-select: none;
+    min-width: 40px;
+    text-align: right;
+}
+
+.editor-container.monokai .markdown-input:focus {
+    background: #272822;
+    box-shadow: inset 0 0 0 1px #f92672;
+}
+
+/* 滚动条样式 */
+.editor-container.monokai .markdown-input::-webkit-scrollbar {
+    width: 14px;
+}
+
+.editor-container.monokai .markdown-input::-webkit-scrollbar-track {
+    background: #272822;
+}
+
+.editor-container.monokai .markdown-input::-webkit-scrollbar-thumb {
+    background: #49483e;
+    border-radius: 7px;
+}
+
+.editor-container.monokai .markdown-input::-webkit-scrollbar-thumb:hover {
+    background: #5e5d52;
+}

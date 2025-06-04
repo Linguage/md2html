@@ -27,12 +27,18 @@
     --app-preview-bg: #2d2d2d;
 }
 
+/* 减少不必要的transition，防止闪动 */
 body {
     font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.6;
     background-color: var(--app-bg-color);
     color: var(--app-text-color);
-    transition: background-color 0.3s, color 0.3s;
+    /* 移除过渡效果，减少闪动 */
+}
+
+/* 只对背景色使用过渡效果 */
+.smooth-bg-transition {
+    transition: background-color 0.3s ease;
 }
 
 /* 主布局 */
@@ -66,6 +72,7 @@ body {
     overflow: hidden;
     width: 100%;
     height: calc(100vh - 110px); /* 减去头部和底部的高度 */
+    position: relative;
 }
 
 .editor-pane, .preview-pane {
@@ -73,10 +80,44 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-width: 40%;
-    border-right: 1px solid var(--app-border-color);
+    min-width: 200px;
     overflow: hidden; /* 确保内容不会溢出 */
     transition: background-color 0.3s, border-color 0.3s;
+}
+
+.editor-pane {
+    border-right: 1px solid var(--app-border-color);
+}
+
+/* 分隔线拖动条 */
+.resizer {
+    width: 4px;
+    background: var(--app-border-color);
+    cursor: col-resize;
+    position: relative;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.resizer:hover {
+    background: #4a90e2;
+}
+
+.resizer:active {
+    background: #2563eb;
+}
+
+.resizer::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 30px;
+    background: currentColor;
+    opacity: 0.5;
+    border-radius: 1px;
 }
 
 .preview-pane {
@@ -114,17 +155,55 @@ body {
     outline: none;
     background-color: var(--app-editor-bg);
     color: var(--app-text-color);
-    transition: background-color 0.3s, color 0.3s;
+    /* 移除过渡效果，减少闪动 */
+    overflow: auto; /* 允许滚动 */
+}
+
+/* 编辑器滚动条优化 */
+.markdown-input::-webkit-scrollbar {
+    width: 8px;
+}
+
+.markdown-input::-webkit-scrollbar-track {
+    background: var(--app-editor-bg);
+}
+
+.markdown-input::-webkit-scrollbar-thumb {
+    background: var(--app-border-color);
+    border-radius: 4px;
+}
+
+.markdown-input::-webkit-scrollbar-thumb:hover {
+    background: #888;
 }
 
 .preview-content {
     flex: 1;
     padding: 1rem;
     overflow-y: auto;
+    overflow-x: hidden; /* 防止水平滚动 */
     background-color: var(--app-preview-bg);
     width: 100%;
     height: 100%;
-    transition: background-color 0.3s;
+    /* 移除过渡效果，减少闪动 */
+}
+
+/* 预览内容滚动优化 */
+.preview-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.preview-content::-webkit-scrollbar-track {
+    background: var(--app-bg-color);
+}
+
+.preview-content::-webkit-scrollbar-thumb {
+    background: var(--app-border-color);
+    border-radius: 4px;
+}
+
+.preview-content::-webkit-scrollbar-thumb:hover {
+    background: #888;
 }
 
 .footer {
@@ -261,5 +340,367 @@ body {
     
     .toolbar {
         flex-wrap: wrap;
+    }
+}
+
+/* 新增：子菜单样式 */
+.submenu {
+    border-top: 1px solid var(--app-border-color);
+    margin-top: 8px;
+    padding-top: 8px;
+}
+
+.submenu:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.submenu-title {
+    display: block;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 12px;
+    color: var(--app-text-color);
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: var(--app-bg-color);
+    border-bottom: 1px solid var(--app-border-color);
+}
+
+/* 新增：面板标题栏控件 */
+.pane-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor-controls,
+.preview-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.editor-controls button,
+.preview-controls button {
+    background: none;
+    border: none;
+    color: var(--app-header-text);
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.editor-controls button:hover,
+.preview-controls button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.editor-controls button.active,
+.preview-controls button.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 新增：编辑器特效容器 */
+.editor-background-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 新增：行号显示 */
+.editor-line-numbers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100%;
+    background: var(--app-editor-bg);
+    border-right: 1px solid var(--app-border-color);
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--app-text-color);
+    opacity: 0.6;
+    padding: 16px 8px;
+    text-align: right;
+    user-select: none;
+    z-index: 2;
+    display: none;
+}
+
+.editor-line-numbers.visible {
+    display: block;
+}
+
+.editor-line-numbers + .markdown-input {
+    padding-left: 60px;
+}
+
+/* 新增：高亮块样式 */
+.highlight-block {
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 8px;
+    border-left: 4px solid;
+    background: rgba(66, 165, 245, 0.1);
+    border-left-color: #42a5f5;
+}
+
+.highlight-block.info {
+    background: rgba(33, 150, 243, 0.1);
+    border-left-color: #2196f3;
+}
+
+.highlight-block.warning {
+    background: rgba(255, 193, 7, 0.1);
+    border-left-color: #ffc107;
+}
+
+.highlight-block.success {
+    background: rgba(76, 175, 80, 0.1);
+    border-left-color: #4caf50;
+}
+
+.highlight-block.error {
+    background: rgba(244, 67, 54, 0.1);
+    border-left-color: #f44336;
+}
+
+/* 新增：多列卡片布局 */
+.card-container {
+    display: grid;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.card-container.single {
+    grid-template-columns: 1fr;
+}
+
+.card-container.double {
+    grid-template-columns: 1fr 1fr;
+}
+
+.card-container.triple {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+    background: var(--app-bg-color);
+    border: 1px solid var(--app-border-color);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--app-text-color);
+}
+
+.card-content {
+    color: var(--app-text-color);
+    opacity: 0.8;
+}
+
+/* 新增：时间线样式 */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--app-border-color);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 30px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    background: var(--app-header-bg);
+    border: 3px solid var(--app-bg-color);
+    border-radius: 50%;
+}
+
+.timeline-date {
+    font-size: 0.9em;
+    color: var(--app-text-color);
+    opacity: 0.7;
+    margin-bottom: 5px;
+}
+
+.timeline-content {
+    background: var(--app-bg-color);
+    border: 1px solid var(--app-border-color);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+/* 新增：数学公式样式增强 */
+.katex-display {
+    margin: 20px 0;
+    text-align: center;
+    background: var(--app-bg-color);
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--app-border-color);
+}
+
+.katex {
+    font-size: 1.1em !important;
+}
+
+/* 新增：代码块增强样式 */
+pre code {
+    display: block;
+    padding: 16px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border-left: 4px solid #007acc;
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.dark-mode pre code {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    border-left-color: #42a5f5;
+}
+
+/* 新增：专注模式样式 */
+.zen-mode .editor-pane {
+    flex: 3;
+}
+
+.zen-mode .preview-pane {
+    flex: 1;
+}
+
+.zen-mode .markdown-input {
+    font-size: 16px;
+    line-height: 1.8;
+    padding: 40px;
+}
+
+/* 新增：响应式多列布局 */
+@media (max-width: 768px) {
+    .card-container.double,
+    .card-container.triple {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        padding-left: 50px;
+    }
+    
+    .timeline-item::before {
+        left: 11px;
+    }
+}
+
+/* 新增：全屏功能样式 */
+.editor-pane.fullscreen,
+.preview-pane.fullscreen {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999;
+    background: var(--app-bg-color);
+    flex: none !important;
+}
+
+.editor-pane.fullscreen .editor-container,
+.preview-pane.fullscreen .preview-content {
+    height: calc(100vh - 60px) !important;
+}
+
+.editor-pane.fullscreen .markdown-input {
+    height: 100% !important;
+    resize: none;
+}
+
+.preview-pane.fullscreen .preview-content {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* 按钮激活状态 */
+.preview-controls button.active,
+.editor-controls button.active {
+    background: rgba(0, 123, 255, 0.1);
+    color: #007acc;
+}
+
+.preview-controls button:hover,
+.editor-controls button:hover {
+    background: rgba(0, 123, 255, 0.05);
+}
+
+/* 打印样式优化 */
+@media print {
+    .header,
+    .footer,
+    .toolbar,
+    .preview-controls,
+    .editor-controls,
+    .no-print {
+        display: none !important;
+    }
+    
+    .preview-content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    pre, blockquote {
+        page-break-inside: avoid;
     }
 }

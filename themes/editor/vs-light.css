@@ -1,0 +1,61 @@
+/* VS Code Light Editor Theme */
+
+.editor-container.vs-light {
+    background: #ffffff;
+}
+
+.editor-container.vs-light .markdown-input {
+    background: #ffffff;
+    color: #383a42;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    border: none;
+    outline: none;
+    padding: 16px;
+    resize: none;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    caret-color: #007acc;
+}
+
+.editor-container.vs-light .markdown-input::selection {
+    background: #add6ff;
+}
+
+.editor-container.vs-light .editor-line-numbers {
+    background: #ffffff;
+    color: #237893;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 16px 8px;
+    border-right: 1px solid #e5e5e5;
+    user-select: none;
+    min-width: 40px;
+    text-align: right;
+}
+
+.editor-container.vs-light .markdown-input:focus {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px #007acc;
+}
+
+/* 滚动条样式 */
+.editor-container.vs-light .markdown-input::-webkit-scrollbar {
+    width: 14px;
+}
+
+.editor-container.vs-light .markdown-input::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.editor-container.vs-light .markdown-input::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 7px;
+}
+
+.editor-container.vs-light .markdown-input::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

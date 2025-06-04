@@ -48,3 +48,26 @@ coverage/
 
 # TypeScript cache
 *.tscache
+
+# Test files and reports
+test-export-*.html
+*TEST-REPORT.md
+*VERIFICATION*.md
+*COMPLETION*.md
+FINAL-VERIFICATION.md
+EXPORT-TEST-REPORT.md
+COMPLETION-REPORT.md
+VERIFICATION-CHECKLIST.md
+test-export.md
+export-test.md
+test-guide.md
+
+# Build and script files
+fix-markdown-lint.sh
+quick-test.sh
+start-server.sh
+start-simple.sh
+start.sh
+test-and-start.js
+comprehensive-demo.html
+CLEANUP-SUMMARY.md
