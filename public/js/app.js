@@ -1084,7 +1084,39 @@ document.addEventListener('DOMContentLoaded', function() {
         URL.revokeObjectURL(url);
     });
 
-    // 加载示例 - 简化实现，直接使用 textarea
+    // 示例文件路径映射表 - 完整版本
+    const examplePathMap = {
+        // 基础示例
+        'welcome-demo': 'basic/welcome-demo',
+        'academic-paper': 'basic/academic-paper',
+        'highlight-blocks': 'basic/highlight-blocks',
+        'math-formulas': 'basic/math-formulas',
+        'multi-column': 'basic/multi-column',
+        
+        // 主题演示
+        'purple-theme-demo': 'themes/purple-theme-demo',
+        'minimal-dark-demo': 'themes/minimal-dark-demo',
+        'modern-clean-demo': 'themes/modern-clean-demo',
+        
+        // 特效演示
+        'deep-space-demo': 'effects/deep-space-demo',
+        'mathematical-demo': 'effects/mathematical-demo',
+        'effect-demo': 'effects/effect-demo',
+        'timeline-demo': 'effects/timeline-demo',
+        
+        // 功能特性
+        'combo-demo': 'features/combo-demo',
+        'comprehensive-demo': 'features/comprehensive-demo',
+        'responsive-test': 'features/responsive-test',
+        'toc-test': 'features/toc-test',
+        
+        // 测试示例
+        'ultimate-test': 'tests/ultimate-test',
+        'feature-test': 'tests/feature-test',
+        'function-test': 'tests/function-test'
+    };
+
+    // 加载示例 - 支持新的目录结构
     console.log('初始化示例加载功能...');
     document.querySelectorAll('.dropdown-content a[data-example]').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -1098,8 +1130,11 @@ document.addEventListener('DOMContentLoaded', function() {
             markdownInput.value = loadingMsg;
             updatePreview();
             
+            // 获取示例文件的完整路径
+            const examplePath = examplePathMap[exampleName] || `basic/${exampleName}`;
+            
             // 加载示例文件
-            fetch(`../examples/${exampleName}.md`)
+            fetch(`../examples/${examplePath}.md`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`无法加载示例 (${response.status}): ${response.statusText}`);
@@ -1113,7 +1148,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .catch(error => {
                     console.error('加载示例失败:', error);
-                    markdownInput.value = `# 加载失败\n\n无法加载示例 "${exampleName}"。\n\n错误信息：${error.message}`;
+                    markdownInput.value = `# 加载失败\n\n无法加载示例 "${exampleName}"。\n\n错误信息：${error.message}\n\n尝试的路径：../examples/${examplePath}.md`;
                     updatePreview();
                 });
         });
